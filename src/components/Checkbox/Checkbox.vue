@@ -125,7 +125,7 @@
   & + label {
     cursor: pointer;
     text-indent: -9999px;
-    width: 50px;
+    width: 70px;
     height: 35px;
     background: #fafafa;
     border: 1px solid #adb5bd;

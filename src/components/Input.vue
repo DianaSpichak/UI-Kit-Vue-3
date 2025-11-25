@@ -61,7 +61,7 @@ const updateValue = (e) => {
 <style lang="scss" scoped>
 .form {
   &-input {
-    margin-bottom: 30px;
+    margin: 30px 0 30px 0;
     position: relative;
   }
   &-error {

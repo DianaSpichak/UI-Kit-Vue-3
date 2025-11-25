@@ -1,13 +1,16 @@
 <script setup>
 import Button from '@/components/Button.vue'
+import { ref } from 'vue'
+import ModalComponent from '@/components/Modal.vue'
+
+const isModalOpen = ref(false)
 
 const eventForButton = () => {
-  alert('You clicked danger button')
+  isModalOpen.value = true
 }
 </script>
 
 <template>
-  <h1 class="heading-1">Button</h1>
   <h2 class="heading-2">Disabled</h2>
   <div class="line">
     <Button label="Primary" color="primary" disabled/>
@@ -42,20 +45,22 @@ const eventForButton = () => {
   </div>
   <h2 class="heading-2">Icon</h2>
   <div class="line">
-    <Button color="primary" icon="heart" outlined/>
-    <Button color="second" icon="hand"/>
-    <Button color="success" icon="address-book" outlined/>
-    <Button color="info" icon="credit-card"/>
-    <Button color="warning" icon="lemon" outlined/>
-    <Button color="danger" icon="hourglass"/>
-  </div>
-  <h2 class="heading-2">Size</h2>
-  <div class="line">
-    <Button label="Normal" color="primary" />
-    <Button label="Large" color="primary" size="large"/>
+    <Button color="primary" icon="heart"/>
+    <Button color="second" icon="moon" outlined/>
+    <Button color="success" icon="address-book"/>
+    <Button color="info" icon="bell" outlined/>
+    <Button color="warning" icon="calendar"/>
+    <Button color="danger" icon="thumbs-up" outlined/>
   </div>
   <h2 class="heading-2">Event</h2>
   <div class="line">
-    <Button label="@click" color="danger" @click="eventForButton"/>
+    <Button label="@click" color="info" @click="eventForButton"/>
   </div>
+  <ModalComponent
+    v-model="isModalOpen"
+    title="Confirmation of the action"
+    message="Are you sure?"
+    confirm-text="Yes"
+    cancel-text="No"
+  />
 </template>

@@ -8,44 +8,36 @@ import Button from '@/components/Button.vue'
 
 const nameField = ref('')
 const emailField = ref('')
-const luckyField = ref('')
+const confirmationCodeField = ref('')
 const passwordField = ref('')
 const confirmPasswordField = ref('')
-const frontendField = ref('')
-
-const mustBeFrontend = (value) => value.includes('frontend')
 
 const rules = computed(() => ({
   nameField: {
-    minLength: helpers.withMessage(`Минимальная длина: 3 символа`, minLength(3))
+    minLength: helpers.withMessage(`Minimum length: 3 characters`, minLength(3))
   },
   emailField: {
-    email: helpers.withMessage('Вы ввели неверный email', email)
+    email: helpers.withMessage('You entered an incorrect email address', email)
   },
-  luckyField: {
-    maxLength: helpers.withMessage(`Максимальная длина: 2 символа`, maxLength(3)),
-    numeric: helpers.withMessage('Вы можете ввести только цифры', numeric)
+  confirmationCodeField: {
+    maxLength: helpers.withMessage(`Maximum length: 6 characters`, maxLength(6)),
+    numeric: helpers.withMessage('You can only enter numbers', numeric)
   },
   confirmPasswordField: {
-    sameAsPassword: helpers.withMessage(`Пароли не совпадают`, sameAs(passwordField.value))
-  },
-  frontendField: {
-    frontendField: helpers.withMessage('Строка должна содержать слово frontend', mustBeFrontend)
+    sameAsPassword: helpers.withMessage(`Passwords don't match`, sameAs(passwordField.value))
   }
 }))
 
-const v = useVuelidate(rules, {nameField, emailField, luckyField, confirmPasswordField, frontendField})
+const v = useVuelidate(rules, {nameField, emailField, confirmationCodeField, confirmPasswordField})
 
 const submitForm = () => {
   v.value.$touch()
-  if (v.value.$error) return
-  alert('Form submitted')
+  if (v.value.$error) 
+    return alert('Form submitted')
 }
 </script>
 
 <template>
-  <h1 class="heading-1">Inputs</h1>
-
   <form @submit.prevent="submitForm">
     <Input
       label="Your name"
@@ -62,11 +54,11 @@ const submitForm = () => {
       :error="v.emailField.$errors"/>
       
     <Input
-      label="Your lucky number"
-      name="lucky"
-      placeholder="Input your lucky number"
-      v-model:value="v.luckyField.$model"
-      :error="v.luckyField.$errors"/>
+      label="Your confirmation code"
+      name="code"
+      placeholder="Input your confirmation code"
+      v-model:value="v.confirmationCodeField.$model"
+      :error="v.confirmationCodeField.$errors"/>
       
     <Input
       label="Your password"
@@ -82,13 +74,6 @@ const submitForm = () => {
       v-model:value="v.confirmPasswordField.$model"
       :error="v.confirmPasswordField.$errors"
       type="password"/>
-
-    <Input
-      label="Frontend string"
-      name="frontend"
-      placeholder="Input string with frontend"
-      v-model:value="v.frontendField.$model"
-      :error="v.frontendField.$errors"/>
 
     <Button label="Submit" color="primary"></Button>
   </form>

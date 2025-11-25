@@ -1,4 +1,7 @@
 <script setup>
+import { toRef, computed } from 'vue'
+import { useProgressColor } from '@/composables/useProgressColor'
+
 const props = defineProps({
   percent: {
     type: Number,
@@ -7,20 +10,31 @@ const props = defineProps({
   color: {
     type: String,
     default: 'primary'
+  },
+  dynamicColor: {
+    type: Boolean,
+    default: false
   }
+})
+
+const percentRef = toRef(props, 'percent')
+const { dynamicColor } = useProgressColor(percentRef)
+
+const progressColor = computed(() => {
+  return props.dynamicColor ? dynamicColor.value : props.color
 })
 </script>
 
 <template>
   <div class="progress-circle">
-    <span class="progress-circle-percent" :style="[{'color': `var(--${color})`}]">{{percent}}%</span>
+    <span class="progress-circle-percent" :style="[{'color': `var(--${progressColor})`}]">{{percent}}%</span>
     <svg width="120" height="120" viewBox="0 0 120 120" class="progress-circle-svg">
       <circle
         cx="60"
         cy="60"
         r="54"
         fill="none"
-        :stroke="`var(--${color}-hover)`"
+        :stroke="`var(--${progressColor}-hover)`"
         stroke-width="12" />
       <circle
         class="progress-circle-line"
@@ -29,7 +43,7 @@ const props = defineProps({
         cy="60"
         r="54"
         fill="none"
-        :stroke="`var(--${color})`"
+        :stroke="`var(--${progressColor})`"
         stroke-width="12"
         pathLength="100" />
     </svg>

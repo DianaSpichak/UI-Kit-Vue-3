@@ -7,7 +7,6 @@ import Radiobutton from '@/views/Radiobutton.vue'
 import Progress from '@/views/Progress.vue'
 import Input from '@/views/Input.vue'
 import Tabs from '@/views/Tabs.vue'
-import Table from '@/views/Table.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,48 +14,51 @@ const router = createRouter({
     {
       path: '/',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta: { title: 'MAIN PAGE' }
     },
     {
       path: '/button',
-      name: 'Button',
-      component: Button
+      name: 'Buttons',
+      component: Button,
+      meta: { title: 'BUTTONS' }
     },
     {
       path: '/typography',
       name: 'Typography',
-      component: Typography
+      component: Typography,
+      meta: { title: 'TYPOGRAPHY' }
     },
     {
       path: '/checkbox',
-      name: 'Checkbox',
-      component: Checkbox
+      name: 'Checkboxes',
+      component: Checkbox,
+      meta: { title: 'CHECKBOXES' }
     },
     {
       path: '/radiobutton',
-      name: 'Radiobutton',
-      component: Radiobutton
+      name: 'Radiobuttons',
+      component: Radiobutton,
+      meta: { title: 'RADIOBUTTONS' }
     },
     {
       path: '/progress',
       name: 'Progress',
-      component: Progress
+      component: Progress,
+      meta: { title: 'PROGRESS' }
     },
     {
       path: '/input',
       name: 'Input',
-      component: Input
+      component: Input,
+      meta: { title: 'INPUTS' }
     },
     {
       path: '/tabs',
       name: 'Tabs',
-      component: Tabs
-    },
-    {
-      path: '/table',
-      name: 'Table',
-      component: Table
-    },
+      component: Tabs,
+      meta: { title: 'TABS' }
+    }
   ]
 })
 

@@ -23,10 +23,6 @@ const props = defineProps({
   icon: {
     type: String,
     required: false
-  },
-  size: {
-    type: String,
-    default: 'normal'
   }
 })
 
@@ -39,7 +35,7 @@ const clickOnButton = () => {
 
 <template>
   <button
-    :class="['btn', `btn_${color}`, {'btn_rounded': rounded}, {'btn_outlined': outlined}, {'btn_icon': icon}, {'btn_large': size === 'large'}]"
+    :class="['btn', `btn_${color}`, {'btn_rounded': rounded}, {'btn_outlined': outlined}, {'btn_icon': icon}]"
     :disabled="disabled"
     @click="clickOnButton">
       <span v-if="icon">
@@ -108,7 +104,7 @@ const clickOnButton = () => {
     cursor: default;
   }
   &_rounded {
-    border-radius: 15px;
+    border-radius: 25px;
   }
   &_outlined {
     background: transparent;

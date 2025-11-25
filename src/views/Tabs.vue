@@ -3,11 +3,11 @@
   import Tabs from '@/components/Tabs.vue'
 
   const tabs = [
-    {name: 'About', label: 'О проекте'},
-    {name: 'Vue', label: 'Про Vue'},
-    {name: 'React', label: 'Про React'},
+    {name: 'About', label: 'About'},
+    {name: 'Help', label: 'Help'},
+    {name: 'FAQ', label: 'FAQ'},
   ]
-  const selectedTab = ref('Vue')
+  const selectedTab = ref('About')
 
   const changeTab = (tabName) => {
     selectedTab.value = tabName
@@ -15,19 +15,18 @@
 </script>
 
 <template>
-  <h1 class="heading-1">Tabs</h1>
   <Tabs
     :names="tabs"
     :selectedTab="selectedTab"
     @changeTab="changeTab">
     <div v-if="selectedTab === 'About'">
-      Lorem ipsum dolor sit amet.
+      Here you can display information about your website and contact details.
     </div>
-    <div v-if="selectedTab === 'Vue'">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi, id.
+    <div v-if="selectedTab === 'Help'">
+      Help section for navigating the website and contact information.
     </div>
-    <div v-if="selectedTab === 'React'">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque. Laborum iusto odit minus incidunt.
+    <div v-if="selectedTab === 'FAQ'">
+      You can leave your question here and also see frequently asked questions and their answers.
     </div>
   </Tabs>
 </template>

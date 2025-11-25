@@ -1,4 +1,7 @@
 <script setup>
+import { computed, toRef } from 'vue'
+import { useProgressColor } from '@/composables/useProgressColor'
+
 const props = defineProps({
   maxWidth: {
     type: String,
@@ -11,15 +14,26 @@ const props = defineProps({
   color: {
     type: String,
     default: 'primary'
+  },
+  dynamicColor: {
+    type: Boolean,
+    default: false
   }
+})
+
+const percentRef = toRef(props, 'percent')
+const { dynamicColor } = useProgressColor(percentRef)
+
+const progressColor = computed(() => {
+  return props.dynamicColor ? dynamicColor.value : props.color
 })
 </script>
 
 <template>
   <div class="progress-container" :style="[{'max-width': maxWidth}]">
-    <span class="progress-percent" :style="[{'color': `var(--${color})`}]">{{percent}}%</span>
-    <div class="progress" :style="[{'background': `var(--${color}-hover)`}]">
-      <div class="progress-bar" :style="[{'width': `${percent}%`}, {'background': `var(--${color})`}]"></div>
+    <span class="progress-percent" :style="[{'color': `var(--${progressColor})`}]">{{percent}}%</span>
+    <div class="progress" :style="[{'background': `var(--${progressColor}-hover)`}]">
+      <div class="progress-bar" :style="[{'width': `${percent}%`}, {'background': `var(--${progressColor})`}]"></div>
     </div>
   </div>
 </template>

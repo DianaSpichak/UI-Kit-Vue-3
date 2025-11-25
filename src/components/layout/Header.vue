@@ -1,5 +1,13 @@
+<script setup>
+const emit = defineEmits(['header-click']);
+
+const handleHeaderClick = () => {
+  emit('header-click');
+};
+</script>
+
 <template>
-  <header class="header">
+  <header class="header" @click="handleHeaderClick">
     <router-link to="/">UI Kit (Vue 3 + Composition API)</router-link>
   </header>
 </template>
@@ -13,6 +21,7 @@
   height: 62px;
   display: flex;
   align-items: center;
+  justify-content: center;
   z-index: 1;
   position: relative;
 }

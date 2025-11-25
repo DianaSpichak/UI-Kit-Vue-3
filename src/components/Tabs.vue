@@ -60,7 +60,7 @@
       }
     }
     &-content {
-      padding: 20px;
+      padding: 20px 0;
       border-radius: 7px;
       background: #fff;
     }

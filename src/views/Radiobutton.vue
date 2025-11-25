@@ -2,32 +2,31 @@
 import { ref } from 'vue'
 import Radiobutton from '@/components/Radiobutton.vue'
 
-const footballClubs = ref([
-  {name: 'CSKA Moscow', id: 'f1'},
-  {name: 'Spartak Moscow', id: 'f2'},
-  {name: 'Real Madrid', id: 'f3'},
-  {name: 'Milan', id: 'f4'}
+const listOfOptions = ref([
+  {name: 'Option 1', id: '1'},
+  {name: 'Option 2', id: '2'},
+  {name: 'Option 3', id: '3'},
+  {name: 'Option 4', id: '4'}
 ])
-const selectedClub = ref('')
+const selectedOption = ref('')
 
 const disabledRadio = ref(true)
-const disabledRadioChecked = ref(true)
+const disabledRadioChecked = ref('Radiobutton Disabled')
 </script>
 
 <template>
-  <h1 class="heading-1">Radiobutton</h1>
-  <h2 class="heading-2">Basic</h2>
+  <h2 class="heading-2">Standart</h2>
   <div class="line line_block">
-    <p>Selecled Club: {{selectedClub}}</p>
+    <p>Selecled option: {{selectedOption}}</p>
     <div
-      v-for="club in footballClubs"
-      :key="club.id">
+      v-for="option in listOfOptions"
+      :key="option.id">
       <radiobutton
-        :value="club.name"
-        :label="club.name"
-        :id="club.id"
-        name="club"
-        v-model:checkedValue="selectedClub"/>
+        :value="option.name"
+        :label="option.name"
+        :id="option.id"
+        name="option"
+        v-model:checkedValue="selectedOption"/>
     </div>
   </div>
   <h2 class="heading-2">Disabled</h2>

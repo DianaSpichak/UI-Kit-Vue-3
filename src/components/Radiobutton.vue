@@ -1,4 +1,6 @@
 <script setup>
+  import { computed } from 'vue'
+
   const emits = defineEmits(['update:checkedValue'])
   const props = defineProps({
     name: {
@@ -17,9 +19,9 @@
       type: String,
       default: ''
     },
-    checked: {
-      type: Boolean,
-      default: false
+    checkedValue: {
+      type: String,
+      default: ''
     },
     disabled: {
       type: Boolean,
@@ -34,19 +36,26 @@
   const handleClick = (event) => {
     emits('update:checkedValue', event.target.value)
   }
+
+  const isChecked = computed(() => props.checkedValue === props.value)
 </script>
 
 <template>
-  <input
-    class="radiobutton"
-    type="radio"
-    :name="name"
-    :id="id"
-    :value="value"
-    :checked="checked"
-    :disabled="disabled"
-    @input="handleClick($event)">
-  <label :for="id">{{label}}</label>
+  <div class="radiobutton-wrapper">
+    <input
+      class="radiobutton"
+      type="radio"
+      :name="name"
+      :id="id"
+      :value="value"
+      :checked="isChecked"
+      :disabled="disabled"
+      @input="handleClick($event)"
+    >
+    <label :for="id">
+      {{label}}
+    </label>
+  </div>
 </template>
 
 <style lang="scss" scoped>

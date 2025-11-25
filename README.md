@@ -1,5 +1,5 @@
 # Vue 3 + Vite
-[![npm version](https://www.npmjs.com/package/ds-uikit-vue3)]
+[![npm version](https://img.shields.io/npm/v/ds-uikit-vue3.svg)](https://www.npmjs.com/package/ds-uikit-vue3)
 
 This UI-Kit is based on Vue 3 and includes buttons, typography, checkboxes, radio buttons, progress bars, input fields, and tabs. 
 UI-Kit is developed using Vue 3 in Vite.

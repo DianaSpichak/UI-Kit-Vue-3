@@ -1,19 +1,20 @@
 # Vue 3 + Vite
+[![npm version](https://www.npmjs.com/package/ds-uikit-vue3)]
 
 This UI-Kit is based on Vue 3 and includes buttons, typography, checkboxes, radio buttons, progress bars, input fields, and tabs. 
 UI-Kit is developed using Vue 3 in Vite.
 The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## 1.Installation
+## 1. Installation
 ```bash
-npm install uikit-vue3
+npm install ds-uikit-vue3
 # or
-yarn add uikit-vue3
+yarn add ds-uikit-vue3
 # or
-pnpm add uikit-vue3
+pnpm add ds-uikit-vue3
 ```
 
-## 2.Configure in your project
+## 2. Configure in your project
 You can connect the library in two ways:
 
 ### Option A: Global registration (all components at once):
@@ -21,8 +22,8 @@ You can connect the library in two ways:
 / main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import UIKitVue3 from 'uikit-vue3'
-import 'uikit-vue3/style.css'
+import UIKitVue3 from 'ds-uikit-vue3'
+import 'ds-uikit-vue3/style.css'
 
 const app = createApp(App)
 app.use(UIKitVue3)
@@ -40,8 +41,8 @@ After that, you can use the components anywhere in your application:
 ### Option B: Local registration (import of individual components):
 ```
 <script setup>
-import { Button } from 'uikit-vue3'
-import 'uikit-vue3/style.css'
+import { Button } from 'ds-uikit-vue3'
+import 'ds-uikit-vue3/style.css'
 </script>
 
 <template>
@@ -50,7 +51,7 @@ import 'uikit-vue3/style.css'
 
 ```
 
-## 3.Components
+## 3. Components
 
 ### Buttons (Button)
 Supports various types
@@ -108,11 +109,12 @@ Supports v-model.
 ### Progress bar (ProgressBar, ProgressCircle)
 Linear and circular progress bars with static and dynamic color changes.
 
-```<ProgressBar maxWidth="400px" :percent="percentBar" color="primary" :dynamic-color="false"/>```
-```<ProgressBar maxWidth="400px" :percent="dynamicPercentBar" :dynamic-color="true"/```
-```<ProgressCircle :percent="percentCircle" :dynamic-color="false"/>```
-```<ProgressCircle :percent="dynamicPercentCircle" :dynamic-color="true"```
-
+```
+<ProgressBar maxWidth="400px" :percent="percentBar" color="primary" :dynamic-color="false"/>
+<ProgressBar maxWidth="400px" :percent="dynamicPercentBar" :dynamic-color="true"/
+<ProgressCircle :percent="percentCircle" :dynamic-color="false"/>
+<ProgressCircle :percent="dynamicPercentCircle" :dynamic-color="true"
+```
 
 ### Tabs (Tabs)
 
@@ -169,7 +171,7 @@ The palette of colors used in the UI Kit.
 />
 ```
 
-## 4.Customization
+## 4. Customization
 The library uses CSS variables for styles. To override them, simply declare your own values in the root element of your application.
 
 ```
